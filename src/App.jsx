@@ -1,7 +1,31 @@
+import Header1 from "./Components/header/Header1";
+import Header2 from "./Components/header/Header2";
+import Header3 from "./Components/header/Header3";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ColorModeContext, useMode } from "./theme";
+
 function App() {
-  return <></>;
+  const [theme, colorMode] = useMode();
+
+  return (
+    <>
+      <ColorModeContext.Provider
+        // @ts-ignore
+        value={colorMode}
+      >
+        <ThemeProvider
+          // @ts-ignore
+          theme={theme}
+        >
+          <Header1 />
+          <Header2 />
+          <Header3 />
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </>
+  );
 }
 
 export default App;
 
-// 12:05
+// 29:00
