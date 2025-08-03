@@ -71,6 +71,9 @@ export const getDesignTokens = (mode) => ({
           text: {
             primary: "#2B3445",
           },
+          myColor: {
+            main: "#f6f9fc",
+          },
           neutral: {
             main: "#64748B",
           },
@@ -85,6 +88,9 @@ export const getDesignTokens = (mode) => ({
           },
           favColor: {
             main: grey[800],
+          },
+          myColor: {
+            main: "#252b32",
           },
           text: {
             primary: "#fff",
@@ -101,7 +107,6 @@ export const useMode = () => {
   const [mode, setMode] = useState("light");
 
   useEffect(() => {
-    // Load saved mode from localStorage on initial render
     const savedMode = localStorage.getItem("mode");
     if (savedMode) {
       setMode(savedMode);
