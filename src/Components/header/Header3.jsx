@@ -1,6 +1,10 @@
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Container,
+  Drawer,
   IconButton,
   ListItemIcon,
   ListItemText,
@@ -17,9 +21,14 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ElectricBikeIcon from "@mui/icons-material/ElectricBike";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import DevicesIcon from "@mui/icons-material/Devices";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import { useState } from "react";
-import { ContentCut } from "@mui/icons-material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+
+import React, { useState } from "react";
+import { Close, ContentCut } from "@mui/icons-material";
 
 export default function Header3() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -31,6 +40,23 @@ export default function Header3() {
     setAnchorEl(null);
   };
   const theme = useTheme();
+  const [state, setState] = useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
   return (
     <Container
       sx={{
@@ -105,9 +131,79 @@ export default function Header3() {
           </MenuItem>
         </Menu>
       </Box>
-      <IconButton>
+      <IconButton onClick={toggleDrawer("top", true)}>
         <MenuIcon />
       </IconButton>
+
+      <Drawer
+        anchor={"top"}
+        open={state["top"]}
+        sx={{
+          ".MuiPaper-root.css-k1yagv-MuiPaper-root-MuiDrawer-paper": {
+            height: "100%",
+          },
+        }}
+        onClose={toggleDrawer("top", false)}
+      >
+        <Box
+          sx={{
+            height: "100%",
+            width: "100%",
+            maxWidth: 444,
+            mx: "auto",
+            mt: 6,
+            position: "relative",
+            pt: 10,
+          }}
+          className="border"
+        >
+          <IconButton
+            sx={{ position: "absolute", top: 0, right: 0 }}
+            onClick={toggleDrawer("top", false)}
+          >
+            <Close />
+          </IconButton>
+
+          {[
+            { mainLink: "Home", subLink: ["Link1", "Link2", "Link3"] },
+            { mainLink: "Mega Menu", subLink: ["Link1", "Link2", "Link3"] },
+            {
+              mainLink: "Full screen menu",
+              subLink: ["Link1", "Link2", "Link3"],
+            },
+            { mainLink: "pages", subLink: ["Link1", "Link2", "Link3"] },
+            { mainLink: "user account", subLink: ["Link1", "Link2"] },
+            {
+              mainLink: "vendor account",
+              subLink: ["Link1"],
+            },
+          ].map((item) => {
+            return (
+              <Accordion key={item.mainLink}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1-content"
+                  id="panel1-header"
+                >
+                  <Typography component="span">{item.mainLink}</Typography>
+                </AccordionSummary>
+
+                <List sx={{ py: 0, my: 0 }}>
+                  {item.subLink.map((link) => {
+                    return (
+                      <ListItem key={link} sx={{ py: 0, my: 0 }}>
+                        <ListItemButton>
+                          <ListItemText primary={link} />
+                        </ListItemButton>
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </Accordion>
+            );
+          })}
+        </Box>
+      </Drawer>
     </Container>
   );
 }
