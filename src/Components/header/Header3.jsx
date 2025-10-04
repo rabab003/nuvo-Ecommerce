@@ -9,6 +9,7 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import Button from "@mui/material/Button";
@@ -29,6 +30,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 
 import React, { useState } from "react";
 import { Close, ContentCut } from "@mui/icons-material";
+import Links from "./Links";
 
 export default function Header3() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -131,9 +133,18 @@ export default function Header3() {
           </MenuItem>
         </Menu>
       </Box>
+
+
+      <Links/>
+
+      {useMediaQuery('(max-width:1000px)') && (
       <IconButton onClick={toggleDrawer("top", true)}>
         <MenuIcon />
-      </IconButton>
+      </IconButton>        
+      )}
+
+
+
 
       <Drawer
         anchor={"top"}
@@ -155,10 +166,9 @@ export default function Header3() {
             position: "relative",
             pt: 10,
           }}
-          className="border"
         >
           <IconButton
-            sx={{ position: "absolute", top: 0, right: 0 }}
+            sx={{":hover":{color:"red",rotate:"180deg"},transition:"0.3s", position: "absolute", top: 0, right: 0 }}
             onClick={toggleDrawer("top", false)}
           >
             <Close />
