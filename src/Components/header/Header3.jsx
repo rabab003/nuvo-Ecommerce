@@ -8,6 +8,7 @@ import {
   IconButton,
   ListItemIcon,
   ListItemText,
+  Stack,
   Typography,
   useMediaQuery,
   useTheme,
@@ -135,7 +136,21 @@ export default function Header3() {
       </Box>
 
 
-      <Links/>
+{useMediaQuery("(min-width:1000px)") && (
+<Stack direction={"row"} alignItems={"center"}>
+
+      <Links title={"Home"}/>
+      <Links title={"Mega Menu"}/>
+      <Links title={"full screen Menu"}/>
+      <Links title={"Pages"}/>
+      <Links title={"User Acount"}/>
+      <Links title={"Vendor Acount"}/>
+
+</Stack>
+)}
+
+
+
 
       {useMediaQuery('(max-width:1000px)') && (
       <IconButton onClick={toggleDrawer("top", true)}>
