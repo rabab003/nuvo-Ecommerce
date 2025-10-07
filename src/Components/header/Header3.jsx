@@ -136,8 +136,8 @@ export default function Header3() {
       </Box>
 
 
-{useMediaQuery("(min-width:1000px)") && (
-<Stack direction={"row"} alignItems={"center"}>
+{useMediaQuery("(min-width:1200px)") && (
+<Stack gap={4} direction={"row"} alignItems={"center"}>
 
       <Links title={"Home"}/>
       <Links title={"Mega Menu"}/>
@@ -152,7 +152,7 @@ export default function Header3() {
 
 
 
-      {useMediaQuery('(max-width:1000px)') && (
+      {useMediaQuery('(max-width:12 00px)') && (
       <IconButton onClick={toggleDrawer("top", true)}>
         <MenuIcon />
       </IconButton>        
