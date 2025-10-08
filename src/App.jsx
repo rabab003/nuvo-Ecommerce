@@ -3,6 +3,7 @@ import Header2 from "./Components/header/Header2";
 import Header3 from "./Components/header/Header3";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
+import Hero from "./Components/Hero/Hero";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -21,6 +22,8 @@ function App() {
           <Header1 />
           <Header2 />
           <Header3 />
+
+          <Hero/>
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>
@@ -29,8 +32,5 @@ function App() {
 
 export default App;
 
-// 1:05:50
-// 1:27:40
-// 1:54:10
-// 2:13:40
-// 2:26:00
+
+// 3:00:00
