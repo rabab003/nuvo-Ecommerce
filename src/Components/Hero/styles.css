@@ -24,7 +24,7 @@
 
 @media (max-width: 600px) {
   
-  .parent-slider img {
+  .swiper-slide img {
     display: none;
 
   }

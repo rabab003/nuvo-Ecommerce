@@ -1,4 +1,4 @@
-import { Box, Button, Container, Link, Stack, Typography } from '@mui/material';
+import { Box, Button, Container, Link, Stack, Typography, useTheme } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -11,12 +11,22 @@ import './styles.css';
 
 
 export default function Hero() {
+    const theme = useTheme()
     return (
         <Container sx={{ mt: 2.5, display: "flex", alignItems: "center", gap: 2 }}>
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
                 <SwiperSlide>
                     <img src='src/images/banner-15.jpg' />
-                    <Box sx={{ position: "absolute", left: "10%" , textAlign:"left"}}>
+                    <Box sx={{
+                        [theme.breakpoints.up('sm')]: {
+                            position: "absolute", left: "10%", textAlign: "left"
+                        },
+
+                        [theme.breakpoints.down('sm')]: {
+                            pt:4,
+                            pb:6
+                        },
+                    }}>
                         <Typography sx={{ color: "#222" }} variant="h5">
                             lifestyle collection
                         </Typography>
