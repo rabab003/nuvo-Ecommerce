@@ -10,6 +10,11 @@ import { Navigation } from 'swiper/modules';
 import './styles.css';
 
 
+const mySlider = [
+    {text:"men", link:"url"}
+]
+
+
 export default function Hero() {
     const theme = useTheme()
     return (
