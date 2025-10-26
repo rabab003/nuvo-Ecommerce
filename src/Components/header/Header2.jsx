@@ -1,4 +1,4 @@
-import { Badge, Container, IconButton, Stack } from "@mui/material";
+ import { Badge, Container, IconButton, Stack } from "@mui/material";
 import { styled, alpha, useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
@@ -25,10 +25,10 @@ const Search = styled("div")(({ theme }) => ({
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
-  minWidth: "300px%",
+  width: "277px",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(3),
-    width: "auto",
+    width: "200px",
   },
 }));
 

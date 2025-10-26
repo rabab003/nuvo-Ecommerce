@@ -1,53 +1,67 @@
 import { Box, Button, Container, Link, Stack, Typography, useTheme } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
-
-
 import { Navigation } from 'swiper/modules';
-
 import './styles.css';
+import IconSection from './IconSection';
 
 
 const mySlider = [
-    {text:"men", link:"url"}
-]
-
+  { text: "MEN", link: "src/images/banner-15.jpg" },
+  { text: "WOMEN", link: "src/images/banner-25.jpg" },
+];
 
 export default function Hero() {
     const theme = useTheme()
     return (
-        <Container sx={{ mt: 2.5, display: "flex", alignItems: "center", gap: 2 }}>
-            <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-                <SwiperSlide>
-                    <img src='src/images/banner-15.jpg' />
+        <Container >
+
+            <Box sx={{ mt: 2.5, display: "flex", alignItems: "center", gap: 2 }}>
+
+     
+            <Swiper loop={true} navigation={true} modules={[Navigation]} className="mySwiper">
+                
+                {mySlider.map((item)=>{
+                    return(
+                                     
+                <SwiperSlide key={item.link} className="parent-slider">
+                    <img src={item.link} />
                     <Box sx={{
                         [theme.breakpoints.up('sm')]: {
                             position: "absolute", left: "10%", textAlign: "left"
                         },
 
                         [theme.breakpoints.down('sm')]: {
-                            pt:4,
-                            pb:6
+                            pt: 4,
+                            pb: 6
                         },
                     }}>
                         <Typography sx={{ color: "#222" }} variant="h5">
-                            lifestyle collection
+                            LIFESTYLE COLLECTION
                         </Typography>
 
                         <Typography sx={{ color: "#222", fontWeight: 400, my: 1 }} variant='h3'>
-                            Men
+                            {item.text}
                         </Typography>
 
-                        <Stack sx={{ justifyContent: "center" }} direction={"row"} alignItems={"center"}>
+                        <Stack sx={{  justifyContent: { xs: "center", sm: "left" }, }} direction={"row"} alignItems={"center"}>
 
-                            <Typography color={"#333"} variant='h4' mr={1}>
-                                sale up to
+                            <Typography color={"#333"} mr={1} variant="h4">
+                                SALE UP TO
                             </Typography>
+                            <Typography color={"#D23F57"} variant="h4">
+                                30% OFF
+                            </Typography>
+                        </Stack>
 
-                            <Typography color={"#d23f57"} variant='h4' mr={1}>
-                                sale up to
+                            <Typography sx={{
+                                color: "#000",
+                                fontWeight: 300,
+                                my: 1,
+                            }}
+                                variant="body1">
+                                Get Free Shipping on orders over $99.00
                             </Typography>
 
                             <Button
@@ -69,10 +83,14 @@ export default function Hero() {
                                 shop now
                             </Button>
 
-                        </Stack>
                     </Box>
                 </SwiperSlide>
-
+  
+                    )
+                })}
+                
+                
+ 
             </Swiper>
 
 
@@ -114,6 +132,10 @@ export default function Hero() {
                     </Stack>
                 </Box>
             </Box>
+
+           
+            </Box>
+            <IconSection />
         </Container>
     )
 }

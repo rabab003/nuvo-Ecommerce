@@ -23,8 +23,8 @@ const Links = ({title}) => {
 
             <ExpandMore sx={{ fontSize: "16px", ml: 1 }} />
 
-            <Box className=" show-when-hover" sx={{ position: "absolute", top: "100%", minWidth: "170px", left: "50%", transform: "translateX(-50%)", display: "none" }}>
-                <Paper sx={{ mt: 1 }} className="show-when-hover">
+            <Box className=" show-when-hover" sx={{ position: "absolute",zIndex:20, top: "100%", minWidth: "170px", left: "50%", transform: "translateX(-50%)", display: "none" }}>
+                <Paper sx={{ mt: 1,  }} className="show-when-hover">
                     <nav aria-label="secondary mailbox folders">
                         <List>
                             <ListItem disablePadding>
@@ -85,7 +85,6 @@ const Links = ({title}) => {
             </Box>
         </Box>
     )
-
 }
 
 export default Links
